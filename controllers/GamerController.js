@@ -7,7 +7,7 @@ const gamerController = {
 			const query =
 				"INSERT INTO gamer (name, score) VALUES ($1, $2) RETURNING *";
 
-			const result = await pool.query(query, [userName, score]);
+			const result = await pool.query(query, [name, score]);
 			res.status(201).json(result.rows[0]);
 		} catch (error) {
 			console.error(error);
@@ -19,7 +19,7 @@ const gamerController = {
 		try {
 			const { score, name } = req.body;
 			const query = "UPDATE gamer set score=$1 where name=$2 RETURNING *";
-			const result = await pool.query(query, [score, userName]);
+			const result = await pool.query(query, [score, name]);
 			res.json(result.rows[0]);
 		} catch (error) {
 			console.error(error);
