@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 
-require("dotenv").config();
+require('dotenv').config();
 
-const cors = require("cors");
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT;
@@ -10,9 +10,11 @@ const port = process.env.PORT;
 app.use(express.json());
 app.use(cors());
 
-const gamerRouter = require("./routes/gamer.router");
+app.use('/uploads', express.static('uploads'));
 
-app.use("/api/v1", gamerRouter);
+const gamerRouter = require('./routes/gamer.router');
+
+app.use('/api/v1', gamerRouter);
 
 app.listen(port, (err) => {
 	if (err) {
