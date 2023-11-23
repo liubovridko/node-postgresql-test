@@ -25,7 +25,7 @@ router.post('/gamer', validateNameMiddleware, GamerController.createGamer);
 
 router.get('/gamers', GamerController.getLeaders);
 
-router.put('/update', GamerController.update);
+router.put('/update', GamerController.updateScore);
 
 router.post('/upload', checkAuth, upload.single('image'), (req, res) => {
 	res.json({

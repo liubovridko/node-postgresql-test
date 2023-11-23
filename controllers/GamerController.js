@@ -15,7 +15,7 @@ const gamerController = {
 		}
 	},
 
-	update: async (req, res) => {
+	updateScore: async (req, res) => {
 		try {
 			const { score, name } = req.body;
 			const query = 'UPDATE gamer set score=$1 where name=$2 RETURNING *';
@@ -29,7 +29,7 @@ const gamerController = {
 
 	getLeaders: async (req, res) => {
 		try {
-			const query = 'SELECT name, score FROM gamer ORDER BY score DESC LIMIT 5';
+			const query = 'SELECT name, score, avatarUrl FROM gamer ORDER BY score DESC LIMIT 5';
 			const result = await pool.query(query);
 			res.json(result.rows);
 		} catch (error) {
